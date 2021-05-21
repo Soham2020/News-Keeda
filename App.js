@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, Dimensions } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -10,14 +11,13 @@ import Business from './Screens/Business';
 import Tech from './Screens/Tech';
 import Trending from './Screens/Trending';
 
-const width = Dimensions.get('window').width;
 
 const Stack = createStackNavigator();
 
 function TrendingStack () {
   return(
     <Stack.Navigator screenOptions={{ headerTitleAlign: 'center' }}>
-      <Stack.Screen name="Trending" component={Trending} />
+      <Stack.Screen name="Trending News" component={Trending} />
     </Stack.Navigator>
   )
 }
@@ -25,7 +25,7 @@ function TrendingStack () {
 function BitcoinStack () {
   return(
     <Stack.Navigator screenOptions={{ headerTitleAlign: 'center' }}>
-      <Stack.Screen name="Bitcoin" component={Bitcoin} />
+      <Stack.Screen name="Bitcoin News" component={Bitcoin} />
     </Stack.Navigator>
   )
 }
@@ -33,7 +33,7 @@ function BitcoinStack () {
 function BusinessStack () {
   return(
     <Stack.Navigator screenOptions={{ headerTitleAlign: 'center' }}>
-      <Stack.Screen name="Business" component={Business} />
+      <Stack.Screen name="Business News" component={Business} />
     </Stack.Navigator>
   )
 }
@@ -41,7 +41,7 @@ function BusinessStack () {
 function TechStack () {
   return(
     <Stack.Navigator screenOptions={{ headerTitleAlign: 'center' }}>
-      <Stack.Screen name="Tech" component={Tech} />
+      <Stack.Screen name="Tech News" component={Tech} />
     </Stack.Navigator>
   )
 }
@@ -53,7 +53,7 @@ function MyTabs() {
     <Tab.Navigator
       initialRouteName="Trending"
       activeColor="black"
-      inactiveColor="white"
+      inactiveColor="#f5fffa"
       labelStyle={{ fontSize: 15 }}
       barStyle={{ backgroundColor: 'skyblue' }}
     >
@@ -106,8 +106,11 @@ function MyTabs() {
 
 export default function App () {
   return(
-    <NavigationContainer>
-      <MyTabs />
-    </NavigationContainer>
+    <>
+      <NavigationContainer>
+        <MyTabs />
+      </NavigationContainer>
+      <StatusBar style='auto' />
+    </>
   )
 }
