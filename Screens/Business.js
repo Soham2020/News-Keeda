@@ -12,7 +12,7 @@ export default function Business ({ navigation }) {
 
     
     const getNews = async(req, res) => {
-        res = await NewsApi.get('top-headlines?country=in&apiKey=API-KEY')
+        res = await NewsApi.get('top-headlines?country=in&apiKey=a71495ed027641fd900a168e220112f7')
         setNews(res.data);
     }
     

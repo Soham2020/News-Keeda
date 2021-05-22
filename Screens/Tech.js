@@ -1,9 +1,43 @@
-import React from 'react'
-import { StyleSheet, View, Text } from 'react-native';
+import React, { useState, useEffect } from 'react'
+import { StyleSheet, View, Text, FlatList, Image } from 'react-native';
 import Card from '../Shared/Card';
+import NewsApi from '../Api/NewsApi'; 
 
-export default function Tech () {
+export default function Tech ({ navigation }) {
+    const [ news, setNews ] = useState([]);
+    useEffect(() => {
+        getNews();
+    }, [])
+
+    
+    const getNews = async(req, res) => {
+        res = await NewsApi.get('everything?domains=techcrunch.com,thenextweb.com&language=en&apiKey=API-KEY')
+        setNews(res.data);
+    }
+    
+    const BG_IMG = 
+    'https://images.pexels.com/photos/753626/pexels-photo-753626.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=500';
+
     return(
-        <Card />
+        <View>
+            <Image
+                source={{ uri: BG_IMG }}
+                style={StyleSheet.absoluteFillObject}
+                blurRadius={8}
+            />
+            <FlatList 
+                data={news.articles}
+                keyExtractor={( item, index ) => 'key' + index}
+                contentContainerStyle={{
+                    padding: 10,
+                    paddingTop: 12,
+                }}
+                renderItem={({ item }) => {
+                    return (
+                        <Card item={item} />
+                    )
+                }}
+            />
+        </View>
     )
 }
