@@ -4,20 +4,19 @@ import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity, Linking } 
 
 const { width, height } = Dimensions.get('window');
 
-export default function Card () {
-    var url = "https://www.reuters.com/technology/bitcoin-under-pressure-comeback-fades-2021-05-21/"
+export default function Card ({ item }) {
     return(
         <View style={styles.cardView}>
-            <TouchableOpacity onPress={() => Linking.openURL(url)}>
+            <TouchableOpacity onPress={() => Linking.openURL( item.url )}>
                 <Text style={styles.title}>
-                    Prince Harry tells Oprah that Diana's death led him to drink and drugs, accuses royals of 'total neglect' - NBC News
+                    { item.title }
                 </Text>
                 <Text style={styles.author}>
-                    Adela Suliman
+                    { item.author }
                 </Text>
-                <Image style={styles.image} source={{ uri: "https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/newscms/2021_20/3476561/210521-prince-harry-oprah-mc-820.JPG", }} />
+                <Image style={styles.image} source={item.urlToImage ? {uri: item.urlToImage } : null} />
                 <Text style={styles.description}>
-                    Prince Harry has accused the British royal family of \"total neglect\" and revealed he turned to drink and drugs years after the death of his mother, Princess Diana.
+                    { item.description }
                 </Text>
             </TouchableOpacity>
         </View>
@@ -28,11 +27,15 @@ const styles = StyleSheet.create({
     cardView: {
         backgroundColor: 'white',
         margin: width * 0.03,
-        borderRadius: width * 0.05,
+        borderRadius: 16,
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
         shadowColor: '#000',
-        shadowOffset: { width:0.5, height: 0.5 },
-        shadowOpacity: 0.5,
-        shadowRadius: 3
+        shadowOffset: {
+          width: 0,
+          height: 0,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 20,
     },
     title: {
         marginHorizontal: width * 0.05,
@@ -46,19 +49,22 @@ const styles = StyleSheet.create({
         marginVertical: width * 0.05,
         marginHorizontal: width * 0.02,
         color: 'gray',
-        fontSize: 18
+        fontSize: 14,
+        opacity: 0.8
     },
     image: {
-        height: height / 6,
+        height: height / 3,
         marginLeft: width * 0.05,
         marginRight: width * 0.05,
-        marginVertical: height * 0.02
+        marginVertical: height * 0.02,
+        borderRadius: 16,
     },
     author: {
         marginBottom: width * 0.0,
         marginHorizontal: width * 0.05,
-        fontSize: 15,
-        color: 'gray'
-
+        fontSize: 12,
+        color: 'gray',
+        opacity: 0.7,
+        color: '#0099cc',
     }
 })
