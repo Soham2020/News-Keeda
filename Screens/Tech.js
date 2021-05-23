@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { StyleSheet, View, Text, FlatList, Image } from 'react-native';
 import Card from '../Shared/Card';
 import NewsApi from '../Api/NewsApi'; 
+import config from '../Api/config';
 
 export default function Tech ({ navigation }) {
     const [ news, setNews ] = useState([]);
@@ -9,15 +10,16 @@ export default function Tech ({ navigation }) {
         getNews();
     }, [])
 
+    const token = config.TOKEN;
+
     
     const getNews = async(req, res) => {
-        res = await NewsApi.get('everything?domains=techcrunch.com,thenextweb.com&language=en&apiKey=API-KEY')
+        res = await NewsApi.get('everything?domains=techcrunch.com,thenextweb.com&language=en&apiKey=' + token)
         setNews(res.data);
     }
     
     const BG_IMG = 
-    'https://images.pexels.com/photos/753626/pexels-photo-753626.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=500';
-
+    'https://images.pexels.com/photos/1433052/pexels-photo-1433052.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=520';
     return(
         <View>
             <Image

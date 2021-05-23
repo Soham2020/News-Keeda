@@ -1,22 +1,24 @@
 // Card for Trending section
 import React from 'react';
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity, Linking } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
-export default function NewsCard () {
+export default function NewsCard ({ item }) {
     return(
         <View style={styles.cardView}>
-            <Text style={styles.title}>
-                Prince Harry tells Oprah that Diana's death led him to drink and drugs, accuses royals of 'total neglect' - NBC News
-            </Text>
-            <Text style={styles.author}>
-                Adela Suliman
-            </Text>
-            <Image style={styles.image} source={{ uri: "https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/newscms/2021_20/3476561/210521-prince-harry-oprah-mc-820.JPG", }} />
-            <Text style={styles.description}>
-                Prince Harry has accused the British royal family of \"total neglect\" and revealed he turned to drink and drugs years after the death of his mother, Princess Diana.
-            </Text>
+            <TouchableOpacity onPress={() => Linking.openURL( item.url )}>
+                <Text style={styles.title}>
+                    {item.title}
+                </Text>
+                <Text style={styles.author}>
+                    {item.author}
+                </Text>
+                <Image style={styles.image} source={{ uri: item.urlToImage, }} />
+                <Text style={styles.description}>
+                    {item.description}
+                </Text>
+            </TouchableOpacity>
         </View>
     )
 }
@@ -24,38 +26,45 @@ export default function NewsCard () {
 const styles = StyleSheet.create({
     cardView: {
         backgroundColor: 'white',
-        margin: width * 0.03,
-        borderRadius: width * 0.05,
+        margin: width * 0.10,
+        borderRadius: 16,
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
         shadowColor: '#000',
-        shadowOffset: { width: 0.5, height: 0.5 },
-        shadowOpacity: 0.5,
-        shadowRadius: 3,
-        marginTop: width * 0.14,
-        marginHorizontal: width * 0.1,
+        shadowOffset: {
+          width: 0,
+          height: 0,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 20,
     },
     title: {
         marginHorizontal: width * 0.05,
         marginVertical: width * 0.03,
         color: 'black',
         fontSize: 20,
-        fontWeight: 'bold',
+        fontWeight: 'bold'
+
     },
     description: {
         marginVertical: width * 0.05,
-        marginHorizontal: width * 0.05,
+        marginHorizontal: width * 0.02,
         color: 'gray',
-        fontSize: 18,
+        fontSize: 14,
+        opacity: 0.8
     },
     image: {
-        height: height / 6,
-        marginLeft: width * 0.04,
-        marginRight: width * 0.04,
+        height: height / 3,
+        marginLeft: width * 0.05,
+        marginRight: width * 0.05,
         marginVertical: height * 0.02,
+        borderRadius: 16,
     },
     author: {
         marginBottom: width * 0.0,
         marginHorizontal: width * 0.05,
-        fontSize: 15,
+        fontSize: 12,
         color: 'gray',
-    },
+        opacity: 0.7,
+        color: '#0099cc',
+    }
 })

@@ -9,7 +9,7 @@ export default function Card ({ item }) {
         <View style={styles.cardView}>
             <TouchableOpacity onPress={() => Linking.openURL( item.url )}>
                 <Text style={styles.title}>
-                    { item.title }
+                    { item.title } 
                 </Text>
                 <Text style={styles.author}>
                     { item.author }
