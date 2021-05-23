@@ -14,7 +14,7 @@ export default function Tech ({ navigation }) {
 
     
     const getNews = async(req, res) => {
-        res = await NewsApi.get('everything?domains=techcrunch.com,thenextweb.com&language=en&apiKey=' + token)
+        res = await NewsApi.get('top-headlines?country=us&category=technology&apiKey=' + token)
         setNews(res.data);
     }
     

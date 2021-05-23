@@ -14,7 +14,7 @@ export default function Business ({ navigation }) {
     const token = config.TOKEN
     
     const getNews = async(req, res) => {
-        res = await NewsApi.get('top-headlines?country=in&apiKey=' + token)
+        res = await NewsApi.get('top-headlines?country=in&category=business&apiKey=' + token)
         setNews(res.data);
     }
     
