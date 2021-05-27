@@ -1,5 +1,9 @@
 # News-Keeda
-It ia a News App made using React-Native, which fetches API from https://newsapi.org/
+It ia a News App made using React-Native, which fetches API.
+
+</br>
+
+### News-API URL: https://newsapi.org/
 
 <br/>
 
