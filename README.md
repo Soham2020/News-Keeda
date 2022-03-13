@@ -68,4 +68,4 @@ It ia a News App made using React-Native, which fetches API.
 # LICENSE
 This project is under <a href="https://en.wikipedia.org/wiki/MIT_License">MIT License</a>. Copyright (c) 2021 Soham Das
 
-A :star: will keep me motivating.
+If you like this repo, then plz make sure that you should :star: it :)
