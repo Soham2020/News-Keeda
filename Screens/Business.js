@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react'
 import { StyleSheet, View, Text, FlatList, Image } from 'react-native';
 import Card from '../Shared/Card';
 import NewsApi from '../Api/NewsApi';
-import config from '../Api/config';
 
 export default function Business ({ navigation }) {
 
@@ -11,10 +10,10 @@ export default function Business ({ navigation }) {
         getNews();
     }, [])
     
-    const token = config.TOKEN
+    // const token = "a71495ed027641fd900a168e220112f7";
     
     const getNews = async(req, res) => {
-        res = await NewsApi.get('top-headlines?country=in&category=business&apiKey=' + token)
+        res = await NewsApi.get('reports')
         setNews(res.data);
     }
     

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, View, Text, FlatList, Image } from 'react-native';
 import Card from '../Shared/Card';
-import NewsApi from '../Api/NewsApi'; 
-import config from '../Api/config';
+import NewsApi from '../Api/NewsApi';
 
 export default function Tech ({ navigation }) {
     const [ news, setNews ] = useState([]);
@@ -10,11 +9,10 @@ export default function Tech ({ navigation }) {
         getNews();
     }, [])
 
-    const token = config.TOKEN;
 
     
     const getNews = async(req, res) => {
-        res = await NewsApi.get('top-headlines?country=us&category=technology&apiKey=' + token)
+        res = await NewsApi.get('blogs')
         setNews(res.data);
     }
     
@@ -28,7 +26,7 @@ export default function Tech ({ navigation }) {
                 blurRadius={8}
             />
             <FlatList 
-                data={news.articles}
+                data={news}
                 keyExtractor={( item, index ) => 'key' + index}
                 contentContainerStyle={{
                     padding: 10,

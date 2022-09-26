@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { StyleSheet, View, Text, Image, FlatList } from 'react-native';
 import Card from '../Shared/Card';
 import NewsApi from '../Api/NewsApi';
-import config from '../Api/config';
 
 export default function Bitcoin ({ navigation }) {
     const [ news, setNews ] = useState([]);
@@ -10,10 +9,10 @@ export default function Bitcoin ({ navigation }) {
         getNews();
     }, [])
 
-    const token = config.TOKEN
+    // const token = "a71495ed027641fd900a168e220112f7";
     
     const getNews = async(req, res) => {
-        res = await NewsApi.get('everything?q=bitcoin&sortBy=publishedAt&language=en&apiKey=' + token)
+        res = await NewsApi.get('blogs')
         setNews(res.data);
     }
     

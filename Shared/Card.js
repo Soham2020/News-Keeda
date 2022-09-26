@@ -12,11 +12,11 @@ export default function Card ({ item }) {
                     { item.title } 
                 </Text>
                 <Text style={styles.author}>
-                    { item.author }
+                    { item.newsSite }
                 </Text>
-                <Image style={styles.image} source={item.urlToImage ? {uri: item.urlToImage } : null} />
+                <Image style={styles.image} source={item.imageUrl ? {uri: item.imageUrl } : null} />
                 <Text style={styles.description}>
-                    { item.description }
+                    { item.summary }
                 </Text>
             </TouchableOpacity>
         </View>

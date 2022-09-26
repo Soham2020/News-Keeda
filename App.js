@@ -51,7 +51,7 @@ const Tab = createMaterialBottomTabNavigator();
 function MyTabs() {
   return(
     <Tab.Navigator
-      initialRouteName="Trending"
+      initialRouteName="Space"
       activeColor="black"
       inactiveColor="#f5fffa"
       labelStyle={{ fontSize: 15 }}
@@ -61,14 +61,14 @@ function MyTabs() {
         name="Trending"
         component={TrendingStack}
         options={{
-          tabBarLabel: 'Trending',
+          tabBarLabel: 'Space',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="fire" color={ color } size={26} />
           ),
         }}
       />
 
-      <Tab.Screen 
+      {/* <Tab.Screen 
         name="Business"
         component={BusinessStack}
         options={{
@@ -88,7 +88,7 @@ function MyTabs() {
             <MaterialCommunityIcons name="bitcoin" color={ color } size={26} />
           ),
         }}
-      />
+      /> */}
 
       <Tab.Screen 
         name="Tech"

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react'
 import { StyleSheet, View, Text, FlatList, Image, Dimensions, Animated } from 'react-native';
 import NewsCard from '../Shared/NewsCard';
 import NewsApi from '../Api/NewsApi';
-import config from '../Api/config'
 
 const {width} = Dimensions.get('screen')
 
@@ -12,10 +11,9 @@ export default function Trending ({ navigation }) {
         getNews();
     }, [])
     
-    const token = config.TOKEN
-    
+   
     const getNews = async(req, res) => {
-        res = await NewsApi.get('top-headlines?country=us&category=health&apiKey=' + token)
+        res = await NewsApi.get('articles')
         setNews(res.data);
     }
     const BG_IMG = 
@@ -29,13 +27,13 @@ export default function Trending ({ navigation }) {
                 blurRadius={8}
             />
             <FlatList 
-                data={news.articles}
+                data={news}
                 horizontal
                 pagingEnabled
                 keyExtractor={( item, index ) => 'key' + index}
                 renderItem={({ item }) => {
                     return (
-                        <View style={{ justifyContent: 'center', alignItems: 'center', width, }}>
+                        <View style={{ justifyContent: 'center', alignItems: 'center', width }}>
                             <NewsCard item={item} />
                         </View>
                     )

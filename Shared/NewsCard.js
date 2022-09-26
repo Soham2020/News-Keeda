@@ -12,11 +12,11 @@ export default function NewsCard ({ item }) {
                     {item.title}
                 </Text>
                 <Text style={styles.author}>
-                    {item.author}
+                    {item.newsSite}
                 </Text>
-                <Image style={styles.image} source={{ uri: item.urlToImage, }} />
+                <Image style={styles.image} source={{ uri: item.imageUrl, }} />
                 <Text style={styles.description}>
-                    {item.description}
+                    {item.summary}
                 </Text>
             </TouchableOpacity>
         </View>
